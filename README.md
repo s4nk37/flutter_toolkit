@@ -40,6 +40,7 @@
 - **🔄 Full Project Refresh**: The "Nuclear Option" – performs a complete teardown and rebuild of the project to fix persistent weird issues.
 - **🧪 Run Tests**: Executes your test suite.
 - **🩺 Flutter Doctor**: Checks your environment.
+- **❓ Help**: Shows all available CLI options.
 
 ---
 
@@ -82,6 +83,38 @@ You will be greeted by an interactive menu:
 ```
 
 Enter the number corresponding to the task you want to perform.
+
+### CLI Mode
+
+You can also run tasks directly from the command line without the interactive menu:
+
+```bash
+./flutter_toolkit.sh --clean         # Deep clean project
+./flutter_toolkit.sh --analyze        # Run analysis and fix
+./flutter_toolkit.sh --build-runner   # Run build_runner
+./flutter_toolkit.sh --pod-install    # Install iOS Pods
+./flutter_toolkit.sh --help           # Show all available options
+```
+
+**All available flags:**
+| Flag | Description |
+|------|-------------|
+| `--analyze` | Run analysis and fix |
+| `--clean` | Deep clean project |
+| `--pub-repair` | Repair pub cache |
+| `--upgrade` | Upgrade dependencies |
+| `--build-runner` | Run build_runner |
+| `--watch` | Watch build_runner |
+| `--slang` | Generate translations |
+| `--gradle-clean` | Clean Gradle |
+| `--assemble` | Assemble Release APK |
+| `--pod-install` | Install Pods |
+| `--pod-update` | Update Pods |
+| `--test` | Run tests |
+| `--doctor` | Run Flutter Doctor |
+| `--help` | Show help message |
+
+> **Note:** The script automatically validates that you're running it from a Flutter project root (checks for `pubspec.yaml`). Platform-specific tasks also verify that the required directories (`android/` or `ios/`) exist.
 
 ---
 

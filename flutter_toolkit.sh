@@ -61,6 +61,25 @@ header() {
   echo ""
 }
 
+show_help() {
+  echo -e "${BOLD}Usage:${RESET} ./flutter_toolkit.sh [OPTION]"
+  echo -e "${BOLD}Options:${RESET}"
+  echo -e "  ${CYAN}--analyze${RESET}       Run analysis and fix"
+  echo -e "  ${CYAN}--clean${RESET}         Deep clean project"
+  echo -e "  ${CYAN}--pub-repair${RESET}    Repair pub cache"
+  echo -e "  ${CYAN}--upgrade${RESET}       Upgrade dependencies"
+  echo -e "  ${CYAN}--build-runner${RESET}  Run build_runner"
+  echo -e "  ${CYAN}--watch${RESET}         Watch build_runner"
+  echo -e "  ${CYAN}--slang${RESET}         Generate translations"
+  echo -e "  ${CYAN}--gradle-clean${RESET}  Clean Gradle"
+  echo -e "  ${CYAN}--assemble${RESET}      Assemble Release APK"
+  echo -e "  ${CYAN}--pod-install${RESET}   Install Pods"
+  echo -e "  ${CYAN}--pod-update${RESET}    Update Pods"
+  echo -e "  ${CYAN}--test${RESET}          Run tests"
+  echo -e "  ${CYAN}--doctor${RESET}        Run Flutter Doctor"
+  echo -e "  ${CYAN}--help${RESET}          Show this help message"
+}
+
 pause() {
   echo ""
   read -p "Press Enter to continue..."
@@ -101,6 +120,7 @@ show_menu() {
   echo -e "  ${CYAN}19)${RESET} 🩺 Flutter Doctor"
   echo -e "  ${CYAN}20)${RESET} 📂 Show Output Paths"
   echo -e "  ${CYAN}21)${RESET} 🔄 Full Project Refresh (The 'Nuclear' Option)"
+  echo -e "  ${CYAN}22)${RESET} ❓ Help"
 
   echo -e "\n${CYAN}0)${RESET} 🚪 Exit"
   echo -e "${CYAN}==========================================================${RESET}"
@@ -303,21 +323,7 @@ full_refresh() {
 # Check for arguments
 if [ $# -gt 0 ]; then
   if [ "$1" == "--help" ]; then
-      echo "Usage: ./flutter_toolkit.sh [OPTION]"
-      echo "Options:"
-      echo "  --analyze       Run analysis and fix"
-      echo "  --clean         Deep clean project"
-      echo "  --pub-repair    Repair pub cache"
-      echo "  --upgrade       Upgrade dependencies"
-      echo "  --build-runner  Run build_runner"
-      echo "  --watch         Watch build_runner"
-      echo "  --slang         Generate translations"
-      echo "  --gradle-clean  Clean Gradle"
-      echo "  --assemble      Assemble Release APK"
-      echo "  --pod-install   Install Pods"
-      echo "  --pod-update    Update Pods"
-      echo "  --test          Run tests"
-      echo "  --doctor        Run Flutter Doctor"
+      show_help
       exit 0
   fi
 
@@ -373,6 +379,7 @@ while true; do
     19) doctor_check ;;
     20) show_paths ;;
     21) full_refresh ;;
+    22) show_help ;;
     0) echo -e "${GREEN}👋 Bye! Happy Coding!${RESET}"; exit 0 ;;
     *) echo -e "${RED}❌ Invalid Option${RESET}" ;;
   esac

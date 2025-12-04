@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - **Project Validation**: The script now verifies it is running in a valid Flutter project root (checks for `pubspec.yaml`).
 - **Platform Checks**: Android and iOS tasks now check for the existence of `android/` and `ios/` directories before execution.
 - **Help Command**: Added `--help` flag to list all available commands.
+- **Interactive Help**: Added Help option (22) to the interactive menu.
 
 ### Changed
 - Improved error handling for missing directories.
